@@ -8,7 +8,7 @@ SET(DEPENDS_DIR "${MY_DIR}/../../depends" CACHE STRING "dependency directory")
 
 OPTION(ENABLE_CXX11 "Enable C++11 support" OFF)
 OPTION(ENABLE_OPENCL "Enable OpenCL support" ON)
-OPTION(ENABLE_CUDA "Enable CUDA support" ON)
+OPTION(ENABLE_CUDA "Enable CUDA support" OFF)
 OPTION(ENABLE_OPENGL "Enable OpenGL support" ON)
 
 IF(ENABLE_CXX11)
@@ -23,6 +23,10 @@ IF(ENABLE_CXX11)
     MESSAGE(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
   ENDIF()
 ENDIF(ENABLE_CXX11)
+
+IF(ENABLE_OPENCL AND ENABLE_CUDA)
+  MESSAGE(FATAL_ERROR "Both OpenCL and CUDA have been enabled. Please enable only one of these two options. CMake will exit.")
+ENDIF(ENABLE_OPENCL AND ENABLE_CUDA)
 
 # additional cmake modules
 LIST(APPEND CMAKE_MODULE_PATH ${MY_DIR}/cmake_modules)
