@@ -234,7 +234,6 @@ TARGET_LINK_LIBRARIES(Protonect
 CONFIGURE_FILE(freenect2.cmake.in "${PROJECT_BINARY_DIR}/freenect2Config.cmake" @ONLY)
 CONFIGURE_FILE(freenect2.pc.in "${PROJECT_BINARY_DIR}/freenect2.pc" @ONLY)
 
-INSTALL(TARGETS Protonect DESTINATION bin)
 INSTALL(TARGETS freenect2shared DESTINATION lib)
 INSTALL(TARGETS freenect2static DESTINATION lib)
 INSTALL(DIRECTORY "${MY_DIR}/include/" DESTINATION include PATTERN "*.in" EXCLUDE)
